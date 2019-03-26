@@ -146,6 +146,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="o2D-Nt-hSZ" kind="show" identifier="PickCategory" id="ao3-RZ-jiN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -288,10 +291,59 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addressLabel" destination="p60-q9-KnR" id="lzZ-hm-Pt7"/>
+                        <outlet property="categoryLabel" destination="5Bw-mw-x3n" id="t6m-Am-uiJ"/>
+                        <outlet property="dateLabel" destination="Ykp-ER-q9R" id="moD-Yf-NVM"/>
+                        <outlet property="descriptionTextView" destination="wbC-cl-p2c" id="UAf-ry-mDh"/>
+                        <outlet property="latitudeLabel" destination="baJ-C8-QZO" id="bed-GZ-XXt"/>
+                        <outlet property="longitudeLabel" destination="Nyq-a4-mxb" id="7G2-i3-ik6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5u-TQ-LNk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2611.875" y="-320.07042253521126"/>
+        </scene>
+        <!--Category Picker View Controller-->
+        <scene sceneID="Dgh-SB-8T0">
+            <objects>
+                <tableViewController id="o2D-Nt-hSZ" customClass="CategoryPickerViewController" customModule="MyLocations" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HSI-F9-I7n">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="Qyd-cc-K0h" style="IBUITableViewCellStyleDefault" id="5Qy-HT-OHf">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Qy-HT-OHf" id="QYZ-ai-31Y">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qyd-cc-K0h">
+                                            <rect key="frame" x="16" y="0.0" width="288" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="R4h-JU-b1G" kind="unwind" identifier="PickedCategory" unwindAction="categoryPickerDidPickCategory:" id="1UU-ln-9uu"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="o2D-Nt-hSZ" id="Yf8-H8-A2i"/>
+                            <outlet property="delegate" destination="o2D-Nt-hSZ" id="ocB-md-Fgj"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a4k-CH-0LM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="R4h-JU-b1G" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3484" y="-320"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
