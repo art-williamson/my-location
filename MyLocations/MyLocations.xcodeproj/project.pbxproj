@@ -13,6 +13,7 @@
 		FF7D649D2247D3C000E3F139 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF7D649B2247D3C000E3F139 /* Main.storyboard */; };
 		FF7D649F2247D3C200E3F139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF7D649E2247D3C200E3F139 /* Assets.xcassets */; };
 		FF7D64A22247D3C200E3F139 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF7D64A02247D3C200E3F139 /* LaunchScreen.storyboard */; };
+		FFD163EF224A4C640014E238 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD163EE224A4C640014E238 /* LocationDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FF7D649E2247D3C200E3F139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF7D64A12247D3C200E3F139 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF7D64A32247D3C200E3F139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFD163EE224A4C640014E238 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				FF7D649E2247D3C200E3F139 /* Assets.xcassets */,
 				FF7D64A02247D3C200E3F139 /* LaunchScreen.storyboard */,
 				FF7D64A32247D3C200E3F139 /* Info.plist */,
+				FFD163EE224A4C640014E238 /* LocationDetailsViewController.swift */,
 			);
 			path = MyLocations;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFD163EF224A4C640014E238 /* LocationDetailsViewController.swift in Sources */,
 				FF7D649A2247D3C000E3F139 /* SecondViewController.swift in Sources */,
 				FF7D64962247D3C000E3F139 /* AppDelegate.swift in Sources */,
 				FF7D64982247D3C000E3F139 /* CurrentLocationView Controller.swift in Sources */,
