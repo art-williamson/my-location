@@ -13,6 +13,7 @@
 		FF7D649F2247D3C200E3F139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF7D649E2247D3C200E3F139 /* Assets.xcassets */; };
 		FF7D64A22247D3C200E3F139 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF7D64A02247D3C200E3F139 /* LaunchScreen.storyboard */; };
 		FFBCAE01224DC9EC00AE3267 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBCAE00224DC9EC00AE3267 /* LocationCell.swift */; };
+		FFBCAE03224E4E2A00AE3267 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBCAE02224E4E2A00AE3267 /* MapViewController.swift */; };
 		FFCAE29B224D23FD00CC0AB2 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCAE29A224D23FD00CC0AB2 /* LocationsViewController.swift */; };
 		FFD163EF224A4C640014E238 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD163EE224A4C640014E238 /* LocationDetailsViewController.swift */; };
 		FFD163F1224A7BAE0014E238 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD163F0224A7BAE0014E238 /* CategoryPickerViewController.swift */; };
@@ -32,6 +33,7 @@
 		FF7D64A12247D3C200E3F139 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF7D64A32247D3C200E3F139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFBCAE00224DC9EC00AE3267 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		FFBCAE02224E4E2A00AE3267 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FFCAE29A224D23FD00CC0AB2 /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		FFD163EE224A4C640014E238 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		FFD163F0224A7BAE0014E238 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				FF7D64972247D3C000E3F139 /* CurrentLocationView Controller.swift */,
 				FFD163EE224A4C640014E238 /* LocationDetailsViewController.swift */,
 				FFCAE29A224D23FD00CC0AB2 /* LocationsViewController.swift */,
+				FFBCAE02224E4E2A00AE3267 /* MapViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				FFCAE29B224D23FD00CC0AB2 /* LocationsViewController.swift in Sources */,
 				FFD2DC45224BC3B000210272 /* Location+CoreDataProperties.swift in Sources */,
 				FFD2DC3E224BC00100210272 /* Functions.swift in Sources */,
+				FFBCAE03224E4E2A00AE3267 /* MapViewController.swift in Sources */,
 				FF7D64962247D3C000E3F139 /* AppDelegate.swift in Sources */,
 				FFD2DC44224BC3B000210272 /* Location+CoreDataClass.swift in Sources */,
 				FFD163F1224A7BAE0014E238 /* CategoryPickerViewController.swift in Sources */,
