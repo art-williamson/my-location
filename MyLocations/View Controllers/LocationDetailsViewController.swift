@@ -39,6 +39,7 @@ class LocationDetailsViewController: UITableViewController {
     }
     var descriptionText = ""
     var image: UIImage?
+    var observer: Any!
     
     //MARK: Outlets
 
@@ -56,19 +57,36 @@ class LocationDetailsViewController: UITableViewController {
     @IBAction func done() {
         let hudView = HudView.hud(inView: navigationController!.view, animated: true)
         let location: Location
+        //display a HUD
         if let temp = locationToEdit {
             hudView.text = "Updated"
             location = temp
         } else {
             hudView.text = "Tagged"
             location = Location(context: managedObjectContext)
+            location.photoId = nil
         }
+        //set the location properties
         location.locationDescription = descriptionTextView.text
         location.category = categoryName
         location.latitude = coordinate.latitude
         location.longitude = coordinate.longitude
         location.date = date
         location.placemark = placemark
+
+        // Save the image
+        if let image = image {
+            if !location.hasPhoto {
+                location.photoId = Location.nextPhotoID() as NSNumber
+            }
+            if let data = image.jpegData(compressionQuality: 0.5) {
+                do {
+                    try data.write(to: location.photoURL, options: .atomic)
+                } catch {
+                    print("Error writing file: \(error)")
+                }
+            }
+        }
 
         do {
             try managedObjectContext.save()
@@ -96,6 +114,11 @@ class LocationDetailsViewController: UITableViewController {
         super.viewDidLoad()
         if let location = locationToEdit {
             title = "Edit Location"
+            if location.hasPhoto {
+                if let theImage = location.photoImage {
+                    show(image: theImage)
+                }
+            }
         }
         descriptionTextView.text = descriptionText
         categoryLabel?.text = categoryName
@@ -115,28 +138,21 @@ class LocationDetailsViewController: UITableViewController {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
         tableView.addGestureRecognizer(gestureRecognizer)
+        listenForBackgroundNotification()
     }
 
     // MARK:- Prviate Methods
 
     func string(from placemark: CLPlacemark) -> String {
-        var text = ""
-        if let s = placemark.subThoroughfare {
-            text += s + " " }
-        if let s = placemark.thoroughfare {
-            text += s + ", "
-        }
-        if let s = placemark.locality {
-            text += s + ", "
-        }
-        if let s = placemark.administrativeArea {
-            text += s + " " }
-        if let s = placemark.postalCode {
-            text += s + ", "
-        }
-        if let s = placemark.country {
-            text += s }
-        return text
+        var line = ""
+        line.add(text: placemark.subThoroughfare)
+        line.add(text: placemark.thoroughfare, separatedBy: " ")
+        line.add(text: placemark.locality, separatedBy: ", ")
+        line.add(text: placemark.administrativeArea,
+                 separatedBy: ", ")
+        line.add(text: placemark.postalCode, separatedBy: " ")
+        line.add(text: placemark.country, separatedBy: ", ")
+        return line
     }
 
     func format(date: Date) -> String {
@@ -158,6 +174,19 @@ class LocationDetailsViewController: UITableViewController {
         imageView.frame = CGRect(x: 10, y: 10, width: 260, height: 260)
         addPhotoLabel.isHidden = true
     }
+
+    //add a listener to the notification center to listen for the app being backgrounded. Return to the main screen
+    //if the app has been backgrounded.
+    func listenForBackgroundNotification() {
+        observer = NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification,
+            object: nil, queue: OperationQueue.main) { [weak self] _ in
+                if let weakSelf = self {
+                    if weakSelf.presentedViewController != nil {
+                        weakSelf.dismiss(animated: false, completion: nil)
+                    }
+                    weakSelf.descriptionTextView.resignFirstResponder()
+                }
+        } }
 
     //MARK: Tableview Delegates
 
@@ -201,6 +230,12 @@ class LocationDetailsViewController: UITableViewController {
             let controller = segue.destination as! CategoryPickerViewController
             controller.selectedCategoryName = categoryName
         }
+    }
+
+    //MARK: Deinit
+
+    deinit {
+        NotificationCenter.default.removeObserver(observer)
     }
  }
 
