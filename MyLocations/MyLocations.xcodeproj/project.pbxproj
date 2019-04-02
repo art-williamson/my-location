@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF686BCC2253A75800637E64 /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = FF686BCB2253A75800637E64 /* Sound */; };
 		FF7D64962247D3C000E3F139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7D64952247D3C000E3F139 /* AppDelegate.swift */; };
 		FF7D64982247D3C000E3F139 /* CurrentLocationView Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7D64972247D3C000E3F139 /* CurrentLocationView Controller.swift */; };
 		FF7D649D2247D3C000E3F139 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF7D649B2247D3C000E3F139 /* Main.storyboard */; };
 		FF7D649F2247D3C200E3F139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF7D649E2247D3C200E3F139 /* Assets.xcassets */; };
-		FF7D64A22247D3C200E3F139 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF7D64A02247D3C200E3F139 /* LaunchScreen.storyboard */; };
 		FF93D31A225158B40088058C /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF93D319225158B40088058C /* UIImage+Resize.swift */; };
 		FF93D31C2251649E0088058C /* String+AddText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF93D31B2251649E0088058C /* String+AddText.swift */; };
 		FF93D31E225171020088058C /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF93D31D225171020088058C /* MyTabBarController.swift */; };
@@ -29,12 +29,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF686BCB2253A75800637E64 /* Sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sound; sourceTree = "<group>"; };
 		FF7D64922247D3C000E3F139 /* MyLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF7D64952247D3C000E3F139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF7D64972247D3C000E3F139 /* CurrentLocationView Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrentLocationView Controller.swift"; sourceTree = "<group>"; };
 		FF7D649C2247D3C000E3F139 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF7D649E2247D3C200E3F139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FF7D64A12247D3C200E3F139 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF7D64A32247D3C200E3F139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF93D319225158B40088058C /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		FF93D31B2251649E0088058C /* String+AddText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AddText.swift"; sourceTree = "<group>"; };
@@ -87,10 +87,10 @@
 		FF7D64942247D3C000E3F139 /* MyLocations */ = {
 			isa = PBXGroup;
 			children = (
+				FF686BCB2253A75800637E64 /* Sound */,
 				FF7D64952247D3C000E3F139 /* AppDelegate.swift */,
 				FF7D649B2247D3C000E3F139 /* Main.storyboard */,
 				FF7D649E2247D3C200E3F139 /* Assets.xcassets */,
-				FF7D64A02247D3C200E3F139 /* LaunchScreen.storyboard */,
 				FF7D64A32247D3C200E3F139 /* Info.plist */,
 				FFD2DC3B224BB4F400210272 /* HudView.swift */,
 				FFD2DC3D224BC00100210272 /* Functions.swift */,
@@ -172,8 +172,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF7D64A22247D3C200E3F139 /* LaunchScreen.storyboard in Resources */,
 				FF7D649F2247D3C200E3F139 /* Assets.xcassets in Resources */,
+				FF686BCC2253A75800637E64 /* Sound in Resources */,
 				FF7D649D2247D3C000E3F139 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,14 +213,6 @@
 				FF7D649C2247D3C000E3F139 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		FF7D64A02247D3C200E3F139 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF7D64A12247D3C200E3F139 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -346,6 +338,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A6DU6723X3;
 				INFOPLIST_FILE = MyLocations/Info.plist;
@@ -364,6 +357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A6DU6723X3;
 				INFOPLIST_FILE = MyLocations/Info.plist;

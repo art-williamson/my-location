@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import CoreData
+import AudioToolbox
 
 class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate, CAAnimationDelegate {
 
@@ -24,6 +25,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var timer: Timer?
     var managedObjectContext: NSManagedObjectContext!
     var logoVisible = false
+    var soundId: SystemSoundID = 0
 
     lazy var logoButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -82,6 +84,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         updateLabels()
+        loadSoundEffect("Sound.caf")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -157,6 +160,10 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                     placemarks, error in
                     self.lastGeocodingError = error
                     if error == nil, let p = placemarks, !p.isEmpty {
+                        if self.placemark == nil {
+                            print("First Time")
+                            self.playSoundEffect()
+                        }
                         self.placemark = p.last!
                     } else {
                         self.placemark = nil
@@ -269,10 +276,23 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     }
 
     func configureGetButton() {
+        let spinnerTag = 1000
+
         if updatingLocation {
             getButton.setTitle("Stop", for: .normal)
+            if view.viewWithTag(spinnerTag) == nil {
+                let spinner = UIActivityIndicatorView(style: .white)
+                spinner.center = messageLabel.center
+                spinner.center.y += spinner.bounds.size.height / 2 + 15
+                spinner.startAnimating()
+                spinner.tag = spinnerTag
+                containerView.addSubview(spinner)
+            }
         } else {
             getButton.setTitle("Get My Location", for: .normal)
+            if let spinner = view.viewWithTag(spinnerTag) {
+                spinner.removeFromSuperview()
+            }
         }
     }
 
@@ -306,7 +326,9 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     }
 
     func hideLogoView() {
-        if !logoVisible { return }
+        if !logoVisible {
+            return
+        }
         logoVisible = false
         containerView.isHidden = false
         containerView.center.x = view.bounds.size.width * 2
@@ -339,6 +361,27 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         logoRotator.timingFunction = CAMediaTimingFunction(
             name: CAMediaTimingFunctionName.easeIn)
         logoButton.layer.add(logoRotator, forKey: "logoRotator")
+    }
+
+    //MARK: Sound Effects
+
+    func loadSoundEffect(_ name: String) {
+        if let path = Bundle.main.path(forResource: name, ofType: nil) {
+            let fileURL = URL(fileURLWithPath: path, isDirectory: false)
+            let error = AudioServicesCreateSystemSoundID(fileURL as CFURL, &soundId)
+            if error != kAudioServicesNoError {
+                print("Error code \(error) loading soundL \(path)")
+            }
+        }
+    }
+
+    func unloadSoundEffect() {
+        AudioServicesDisposeSystemSoundID(soundId)
+        soundId = 0
+    }
+
+    func playSoundEffect() {
+        AudioServicesPlaySystemSound(soundId)
     }
 }
 
